@@ -1,0 +1,98 @@
+@import url("https://fonts.googleapis.com/css2?family=Muli:wght@400&display=swap");
+/* line 3, scss/style.scss */
+html {
+  font-family: 'Muli', sans-serif; }
+
+/* line 7, scss/style.scss */
+body {
+  height: 100%;
+  width: 100%;
+  overflow: hidden; }
+
+/* line 13, scss/style.scss */
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 47vh 47vh;
+  gap: 2vh;
+  padding: 2vh; }
+
+/* line 23, scss/style.scss */
+.player {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid #ccc;
+  border-radius: 3px 3px 10px 10px;
+  color: white; }
+  /* line 31, scss/style.scss */
+  .player .bars {
+    height: 100%;
+    overflow: auto;
+    margin-bottom: 10px; }
+    /* line 35, scss/style.scss */
+    .player .bars .bar {
+      height: 30px;
+      margin: 5px;
+      border-radius: 3px;
+      background-color: black;
+      cursor: pointer;
+      text-align: center; }
+      /* line 43, scss/style.scss */
+      .player .bars .bar span {
+        z-index: 99;
+        bottom: 23px;
+        position: relative;
+        font-weight: bolder;
+        color: white; }
+      /* line 51, scss/style.scss */
+      .player .bars .bar .bar-fill {
+        height: 100%;
+        border-radius: 3px;
+        border: 3px solid black; }
+  /* line 61, scss/style.scss */
+  .player .panel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; }
+    /* line 67, scss/style.scss */
+    .player .panel form {
+      display: flex;
+      width: 100%;
+      align-items: center;
+      justify-content: space-around;
+      margin-bottom: 5px; }
+      /* line 74, scss/style.scss */
+      .player .panel form input {
+        text-align: center; }
+      /* line 78, scss/style.scss */
+      .player .panel form input[type="color"] {
+        -webkit-appearance: none;
+        border: none;
+        width: 32px;
+        height: 32px;
+        padding: 0;
+        background: none;
+        cursor: pointer; }
+      /* line 87, scss/style.scss */
+      .player .panel form input[type="color"]::-webkit-color-swatch-wrapper {
+        padding: 0; }
+      /* line 90, scss/style.scss */
+      .player .panel form input[type="color"]::-webkit-color-swatch {
+        border: none; }
+  /* line 96, scss/style.scss */
+  .player button {
+    border: none;
+    background-color: gray;
+    border-radius: 0 0 10px 10px;
+    color: white;
+    height: 30px;
+    font-size: 16px;
+    cursor: pointer; }
+  /* line 106, scss/style.scss */
+  .player > input {
+    border: none;
+    text-align: center;
+    font-size: 20px;
+    margin: 10px 0px; }
