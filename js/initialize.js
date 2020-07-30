@@ -80,12 +80,19 @@ function createBarForm(bar){
     return form;
 }
 
-function bindButton(player){
-    const button = player.getElementsByTagName('button')[0];
+function bindInputs(playerElement, player){
+    const button = playerElement.getElementsByTagName('button')[0];
+    const nameInput = playerElement.getElementsByTagName('input')[0];
+
     button.addEventListener('click', () => {
-        createBar(player);
+        createBar(playerElement);
         saveState();
     });
+
+    nameInput.addEventListener('change', () => {
+        player.name = nameInput.value;
+        saveState();
+    })
 }
 
 function createVirtualBar(player, barElement, options){
@@ -132,7 +139,7 @@ function restoreState(){
     savedState = JSON.parse(localStorage.getItem('baseStructure'));
     if(!savedState){
         for (const player of playerElements) {
-            bindButton(player);
+            bindInputs(player);
             players.push({
                 id: player.id,
                 element: player,
@@ -144,7 +151,9 @@ function restoreState(){
     players = savedState;
     players.forEach(player => {
         player.element = document.getElementById(player.id);
-        bindButton(player.element);
+        if(player.name)
+            player.element.getElementsByTagName('input')[0].value = player.name;
+        bindInputs(player.element, player);
         restorePlayerBars(player)
     })
 }
