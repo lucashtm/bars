@@ -1,15 +1,6 @@
-const playerElements = document.getElementsByClassName('grid-container')[0].children;
+let playerElements = document.getElementsByClassName('grid-container')[0].children;
 let players = [];
 const colors = ['#e20068', '#5300d8', '#4eca00'];
-
-for (const player of playerElements) {
-    bindButton(player);
-    players.push({
-        id: player.id,
-        element: player,
-        bars: []
-    });
-}
 
 function setBarColor(bar, color){
     bar.element.children[0].style.backgroundColor = color;
@@ -21,20 +12,32 @@ function setBarWidth(bar){
     bar.element.children[0].style.width = `${width}%`;
 }
 
-function createBar(player){
+function createBar(player, options){
+
+    // CREATE BAR HTML
     const bars = player.getElementsByClassName('bars')[0];
     const newBar = document.createElement('div');
     newBar.classList.add('bar');
     const fill = document.createElement('div');
     fill.classList.add('bar-fill');
     newBar.appendChild(fill);
+
+    // CALCULATE DEFAULT ATTRIBUTES / SKIP IF OPTIONS GIVEN
     const totalBars = bars.children.length;
     const color = colors[totalBars % 3];
     const virtualPlayer = players.find(element => element.id == player.id);
-    const virtualBar = createVirtualBar(virtualPlayer, newBar, {max: 100, current: 100, color});
+    var virtualBar;
+    if(!options){
+        virtualBar = createVirtualBar(virtualPlayer, newBar, {max: 100, current: 100, color});
+    }else{
+        virtualBar = options;
+        virtualBar.element = newBar
+    }
     const text = createBarText(virtualBar);
     newBar.appendChild(text);
     setBarColor(virtualBar, color);
+
+    // APPLY BAR
     bars.appendChild(newBar);
     const virtualForm = createBarForm(virtualBar);
     player.getElementsByClassName('panel')[0].appendChild(virtualForm);
@@ -55,15 +58,19 @@ function createBarForm(bar){
     form.appendChild(maxInput);
     form.appendChild(currentInput);
     colorInput.addEventListener('change', () => {
+        bar.color = colorInput.value;
         setBarColor(bar, colorInput.value);
+        saveState()
     });
     maxInput.addEventListener('change', () => {
         bar.max = maxInput.value;
         setBarWidth(bar);
+        saveState()
     });
     currentInput.addEventListener('change', () => {
         bar.current = currentInput.value;
         setBarWidth(bar);
+        saveState()
     });
     form.style.display = 'none';
     bar.element.addEventListener('click', () => {
@@ -77,6 +84,7 @@ function bindButton(player){
     const button = player.getElementsByTagName('button')[0];
     button.addEventListener('click', () => {
         createBar(player);
+        saveState();
     });
 }
 
@@ -86,7 +94,7 @@ function createVirtualBar(player, barElement, options){
         max: options.max,
         current: options.current,
         color: options.color
-    }
+    };
     player.bars.push(bar);
     return bar;
 }
@@ -114,3 +122,39 @@ function createBarText(bar){
     span.appendChild(text);
     return span;
 }
+
+function saveState(){
+    localStorage.setItem('baseStructure', JSON.stringify(players));
+}
+
+function restoreState(){
+    playerElements = document.getElementsByClassName('grid-container')[0].children;
+    savedState = JSON.parse(localStorage.getItem('baseStructure'));
+    if(!savedState){
+        for (const player of playerElements) {
+            bindButton(player);
+            players.push({
+                id: player.id,
+                element: player,
+                bars: []
+            });
+        }
+        return;
+    }
+    players = savedState;
+    players.forEach(player => {
+        player.element = document.getElementById(player.id);
+        bindButton(player.element);
+        restorePlayerBars(player)
+    })
+}
+
+function restorePlayerBars(player){
+    player.bars.forEach(bar => {
+        createBar(player.element, bar);
+        setBarWidth(bar);
+        setBarColor(bar, bar.color);
+    });
+}
+
+restoreState();
