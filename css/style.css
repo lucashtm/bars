@@ -1,98 +1,134 @@
 @import url("https://fonts.googleapis.com/css2?family=Muli:wght@400&display=swap");
-/* line 3, scss/style.scss */
 html {
-  font-family: 'Muli', sans-serif; }
+  font-family: "Muli", sans-serif;
+}
 
-/* line 7, scss/style.scss */
 body {
   height: 100%;
   width: 100%;
-  overflow: hidden; }
+  overflow: hidden;
+}
 
-/* line 13, scss/style.scss */
 .grid-container {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 47vh 47vh;
   gap: 2vh;
-  padding: 2vh; }
+  padding: 2vh;
+}
 
-/* line 23, scss/style.scss */
 .player {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   border: 1px solid #ccc;
   border-radius: 3px 3px 10px 10px;
-  color: white; }
-  /* line 31, scss/style.scss */
-  .player .bars {
-    height: 100%;
-    overflow: auto;
-    margin-bottom: 10px; }
-    /* line 35, scss/style.scss */
-    .player .bars .bar {
-      height: 30px;
-      margin: 5px;
-      border-radius: 3px;
-      background-color: black;
-      cursor: pointer;
-      text-align: center; }
-      /* line 43, scss/style.scss */
-      .player .bars .bar span {
-        z-index: 99;
-        bottom: 23px;
-        position: relative;
-        font-weight: bolder;
-        color: white; }
-      /* line 51, scss/style.scss */
-      .player .bars .bar .bar-fill {
-        height: 100%;
-        border-radius: 3px;
-        border: 3px solid black; }
-  /* line 61, scss/style.scss */
-  .player .panel {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center; }
-    /* line 67, scss/style.scss */
-    .player .panel form {
-      display: flex;
-      width: 100%;
-      align-items: center;
-      justify-content: space-around;
-      margin-bottom: 5px; }
-      /* line 74, scss/style.scss */
-      .player .panel form input {
-        text-align: center; }
-      /* line 78, scss/style.scss */
-      .player .panel form input[type="color"] {
-        -webkit-appearance: none;
-        border: none;
-        width: 32px;
-        height: 32px;
-        padding: 0;
-        background: none;
-        cursor: pointer; }
-      /* line 87, scss/style.scss */
-      .player .panel form input[type="color"]::-webkit-color-swatch-wrapper {
-        padding: 0; }
-      /* line 90, scss/style.scss */
-      .player .panel form input[type="color"]::-webkit-color-swatch {
-        border: none; }
-  /* line 96, scss/style.scss */
-  .player button {
-    border: none;
-    background-color: gray;
-    border-radius: 0 0 10px 10px;
-    color: white;
-    height: 30px;
-    font-size: 16px;
-    cursor: pointer; }
-  /* line 106, scss/style.scss */
-  .player > input {
-    border: none;
-    text-align: center;
-    font-size: 20px;
-    margin: 10px 0px; }
+  color: white;
+}
+.player .bars {
+  height: 100%;
+  overflow: auto;
+  margin-bottom: 10px;
+}
+.player .bars .bar {
+  height: 30px;
+  margin: 5px;
+  border-radius: 3px;
+  background-color: black;
+  padding: 3px;
+  cursor: pointer;
+  text-align: center;
+}
+.player .bars .bar span {
+  z-index: 99;
+  bottom: 22px;
+  position: relative;
+  font-weight: bolder;
+  color: white;
+}
+.player .bars .bar .bar-fill {
+  height: 100%;
+}
+.player .panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.player .panel form {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-around;
+  margin-bottom: 5px;
+}
+.player .panel form input {
+  max-width: 80px;
+  text-align: center;
+}
+.player .panel form input[type=color] {
+  -webkit-appearance: none;
+  border: none;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  background: none;
+  cursor: pointer;
+}
+.player .panel form input[type=color]::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+.player .panel form input[type=color]::-webkit-color-swatch {
+  border: none;
+}
+.player .panel form .delete-bar {
+  color: #cf5151;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+.player .add-bar {
+  border: none;
+  background-color: gray;
+  border-radius: 0 0 10px 10px;
+  color: white;
+  height: 30px;
+  font-size: 16px;
+  cursor: pointer;
+}
+.player > input {
+  border: none;
+  text-align: center;
+  font-size: 20px;
+  margin: 10px 0px;
+}
+
+.waves {
+  position: relative;
+}
+
+/* Animation */
+.parallax > use {
+  animation: move-forever 15s cubic-bezier(0.55, 0.5, 0.45, 0.5) infinite;
+}
+
+.parallax > use:nth-child(1) {
+  animation-delay: -2s;
+  animation-duration: 3s;
+}
+
+.parallax > use:nth-child(2) {
+  animation-delay: -3s;
+  animation-duration: 7s;
+}
+
+@keyframes move-forever {
+  0% {
+    transform: translate3d(-90px, 0, 0);
+  }
+  100% {
+    transform: translate3d(85px, 0, 0);
+  }
+}
+
+/*# sourceMappingURL=style.css.map */
