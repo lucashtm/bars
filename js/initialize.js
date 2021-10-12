@@ -103,9 +103,10 @@ function createBarForm(bar, player=null){
     return form;
 }
 
-function bindInputs(playerElement, player){
+function bindInputs(playerElement, player={}){
     const button = playerElement.getElementsByTagName('button')[0];
     const nameInput = playerElement.getElementsByTagName('input')[0];
+    player.element = playerElement;
 
     button.addEventListener('click', () => {
         createBar(player);
