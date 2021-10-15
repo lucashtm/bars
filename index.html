@@ -1,75 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
-    <script type='text/javascript' src='js/tinycolor.js'></script>
+
     <title>Bars</title>
-</head>
-<body>
-    <div class="grid-container">
-        <div class="player" id="player-1">
-            <input type="text" name="label" placeholder="Player 1">
-            <div class="bars">
-            </div>
-            <div class="panel">
-            </div>
-            <button class="add-bar">Add Bar</button>
-        </div>
-        <div class="player" id="player-2">
-            <input type="text" name="label" placeholder="Player 2">
-
-            <p class="label"></p>
-            <div class="bars">
-            </div>
-            <div class="panel">
-            </div>
-            <button class="add-bar">Add Bar</button>
-        </div>
-        <div class="player" id="player-3">
-            <input type="text" name="label" placeholder="Player 3">
-
-            <p class="label"></p>
-            <div class="bars">
-            </div>
-            <div class="panel">
-            </div>
-            <button class="add-bar">Add Bar</button>
-        </div>
-        <div class="player" id="player-4">
-            <input type="text" name="label" placeholder="Player 4">
-
-            <p class="label"></p>
-            <div class="bars">
-            </div>
-            <div class="panel">
-            </div>
-            <button class="add-bar">Add Bar</button>
-        </div>
-        <div class="player" id="player-5">
-            <input type="text" name="label" placeholder="Player 5">
-
-            <p class="label"></p>
-            <div class="bars">
-            </div>
-            <div class="panel">
-            </div>
-            <button class="add-bar">Add Bar</button>
-        </div>
-        <div class="player" id="player-6">
-            <input type="text" name="label" placeholder="Player 6">
-
-            <p class="label"></p>
-            <div class="bars">
-            </div>
-            <div class="panel">
-            </div>
-            <button class="add-bar">Add Bar</button>
-        </div>
-    </div>
-    <script src="js/initialize.js"></script>
-</body>
+  </head>
+  <body>
+    <div id="app" class="grid-container"></div>
+    <script type="module" src="/src/main.js"></script>
+    <script src="./src/lib/tinycolor.js" ></script>
+    <script src="./src/lib/initialize.js"></script>
+  </body>
 </html>

@@ -1,8 +1,7 @@
 // TinyColor v1.4.1
 // https://github.com/bgrins/TinyColor
 // Brian Grinstead, MIT License
-
-(function(Math) {
+ (function(Math) {
 
 var trimLeft = /^\s+/,
     trimRight = /\s+$/,

@@ -1,4 +1,4 @@
-let playerElements = document.getElementsByClassName('grid-container')[0].children;
+var playerElements = document.getElementById('app').children;
 let players = [];
 const colors = ['#e20068', '#5300d8', '#4eca00'];
 var fillSVG = '<svg class="waves" style="width:100%;height:100%;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" /></defs><g class="parallax"><use xlink:href="#gentle-wave" x="48" y="2" fill="AAA" /><use xlink:href="#gentle-wave" x="48" y="4" fill="BBB" /></g></svg>'
@@ -107,6 +107,7 @@ function bindInputs(playerElement, player={}){
     const button = playerElement.getElementsByTagName('button')[0];
     const nameInput = playerElement.getElementsByTagName('input')[0];
     player.element = playerElement;
+    console.log('teste');
 
     button.addEventListener('click', () => {
         createBar(player);
@@ -160,8 +161,8 @@ function saveState(){
 }
 
 function restoreState(){
-    playerElements = document.getElementsByClassName('grid-container')[0].children;
-    savedState = JSON.parse(localStorage.getItem('baseStructure'));
+    console.log('respore state', playerElements.length);
+    const savedState = JSON.parse(localStorage.getItem('baseStructure'));
     if(!savedState){
         for (const player of playerElements) {
             bindInputs(player);
@@ -192,4 +193,3 @@ function restorePlayerBars(player){
     });
 }
 
-restoreState();
