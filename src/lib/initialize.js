@@ -1,8 +1,10 @@
+import tinycolor from "tinycolor2";
+
 var playerElements = document.getElementById('app').children;
 let players = [];
 const colors = ['#e20068', '#5300d8', '#4eca00'];
 var fillSVG = '<svg class="waves" style="width:100%;height:100%;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" /></defs><g class="parallax"><use xlink:href="#gentle-wave" x="48" y="2" fill="AAA" /><use xlink:href="#gentle-wave" x="48" y="4" fill="BBB" /></g></svg>'
-function setBarColor(bar, color){
+window.setBarColor = (bar, color) => {
     color = tinycolor(color);
     const bgColor = color.darken(15).toHexString();
     const secondColor = color.spin(2).desaturate(20).lighten(10).toHexString();
@@ -11,13 +13,13 @@ function setBarColor(bar, color){
     bar.element.children[0].style.backgroundColor = bgColor;
 }
 
-function setBarWidth(bar){
+window.setBarWidth = (bar) => {
     const width = 100*bar.current/bar.max;
     bar.element.getElementsByTagName('span')[0].innerHTML = `${bar.current}/${bar.max}`;
     bar.element.children[0].style.width = `${width}%`;
 }
 
-function createBar(player, options){
+window.createBar = (player, options) => {
 
     // CREATE BAR HTML
     const playerElement = player.element;
@@ -52,7 +54,8 @@ function createBar(player, options){
     playerElement.getElementsByClassName('panel')[0].appendChild(virtualForm);
 }
 
-function createBarForm(bar, player=null){
+window.createBarForm = (bar, player=null) => {
+    console.log('bar', bar);
     const form = document.createElement('form');
     const colorInput = document.createElement('input');
     colorInput.type = 'color';
@@ -103,7 +106,7 @@ function createBarForm(bar, player=null){
     return form;
 }
 
-function bindInputs(playerElement, player={}){
+window.bindInputs = (playerElement, player={}) => {
     const button = playerElement.getElementsByTagName('button')[0];
     const nameInput = playerElement.getElementsByTagName('input')[0];
     player.element = playerElement;
@@ -121,7 +124,7 @@ function bindInputs(playerElement, player={}){
     })
 }
 
-function createVirtualBar(player, barElement, options){
+window.createVirtualBar = (player, barElement, options) => {
     const bar = {
         element: barElement,
         max: options.max,
@@ -132,14 +135,14 @@ function createVirtualBar(player, barElement, options){
     return bar;
 }
 
-function toggleForm(form){
+window.toggleForm = (form) => {
     if(form.style.display == 'none')
         form.style.display = '';
     else
         form.style.display = 'none';
 }
 
-function hideForms(){
+window.hideForms = () => {
     players.forEach(player => {
         const el = document.getElementById(player.id);
         const forms = el.getElementsByClassName('panel')[0].getElementsByTagName('form');
@@ -149,18 +152,18 @@ function hideForms(){
     })
 }
 
-function createBarText(bar){
+window.createBarText = (bar) => {
     const span = document.createElement('span');
     const text = document.createTextNode(`${bar.current}/${bar.max}`)
     span.appendChild(text);
     return span;
 }
 
-function saveState(){
+window.saveState = () => {
     localStorage.setItem('baseStructure', JSON.stringify(players));
 }
 
-function restoreState(){
+window.restoreState = () => {
     console.log('respore state', playerElements.length);
     const savedState = JSON.parse(localStorage.getItem('baseStructure'));
     if(!savedState){
@@ -185,7 +188,7 @@ function restoreState(){
     feather.replace();
 }
 
-function restorePlayerBars(player){
+window.restorePlayerBars = (player) => {
     player.bars.forEach(bar => {
         createBar(player, bar);
         setBarWidth(bar);
