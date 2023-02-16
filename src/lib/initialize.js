@@ -53,7 +53,7 @@ window.createBar = (player, options) => {
     const virtualForm = createBarForm(virtualBar, player);
     playerElement.getElementsByClassName('panel')[0].appendChild(virtualForm);
 }
-
+ 
 window.createBarForm = (bar, player=null) => {
     console.log('bar', bar);
     const form = document.createElement('form');
