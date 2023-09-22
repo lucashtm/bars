@@ -17,7 +17,7 @@ body {
   padding: 2vh;
 }
 
-.player {
+.bar-group {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -25,12 +25,12 @@ body {
   border-radius: 3px 3px 10px 10px;
   color: white;
 }
-.player .bars {
+.bar-group .bars {
   height: 100%;
   overflow: auto;
   margin-bottom: 10px;
 }
-.player .bars .bar {
+.bar-group .bars .bar {
   height: 30px;
   margin: 5px;
   border-radius: 3px;
@@ -39,34 +39,34 @@ body {
   cursor: pointer;
   text-align: center;
 }
-.player .bars .bar span {
+.bar-group .bars .bar span {
   z-index: 99;
   bottom: 22px;
   position: relative;
   font-weight: bolder;
   color: white;
 }
-.player .bars .bar .bar-fill {
+.bar-group .bars .bar .bar-fill {
   height: 100%;
 }
-.player .panel {
+.bar-group .panel {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
-.player .panel form {
+.bar-group .panel form {
   display: flex;
   width: 100%;
   align-items: center;
   justify-content: space-around;
   margin-bottom: 5px;
 }
-.player .panel form input {
+.bar-group .panel form input {
   max-width: 80px;
   text-align: center;
 }
-.player .panel form input[type=color] {
+.bar-group .panel form input[type=color] {
   -webkit-appearance: none;
   border: none;
   width: 32px;
@@ -75,19 +75,19 @@ body {
   background: none;
   cursor: pointer;
 }
-.player .panel form input[type=color]::-webkit-color-swatch-wrapper {
+.bar-group .panel form input[type=color]::-webkit-color-swatch-wrapper {
   padding: 0;
 }
-.player .panel form input[type=color]::-webkit-color-swatch {
+.bar-group .panel form input[type=color]::-webkit-color-swatch {
   border: none;
 }
-.player .panel form .delete-bar {
+.bar-group .panel form .delete-bar {
   color: #cf5151;
   border: none;
   background: none;
   cursor: pointer;
 }
-.player .add-bar {
+.bar-group .add-bar {
   border: none;
   background-color: gray;
   border-radius: 0 0 10px 10px;
@@ -96,7 +96,7 @@ body {
   font-size: 16px;
   cursor: pointer;
 }
-.player > input {
+.bar-group > input {
   border: none;
   text-align: center;
   font-size: 20px;

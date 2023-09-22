@@ -1,4 +1,5 @@
 <script>
+  import Bar from "./Bar.svelte";
 
   export let id;
   let name;
@@ -10,9 +11,10 @@
 <style>
 </style>
 
-<div class="player" id="{id}">
-  <input type="text" name="label" placeholder="Player 1" bind:value={name}>
+<div class="bar-group" id="{id}">
+  <input type="text" name="label" placeholder="Group {id}" bind:value={name}>
   <div class="bars">
+    <Bar id="{id}" />
   </div>
   <div class="panel">
   </div>

@@ -1,15 +1,15 @@
 <script>
   import { onMount } from 'svelte';
-  import Player from './components/Player.svelte';
+  import BarGroup from './components/BarGroup.svelte';
 
   onMount(() => {
     restoreState();
   })
 
-  let players = [1,2,3,4,5,6];
+  let groups = [1];
 </script>
 
-{#each players as player, i}
-  <Player id={`player-${i+1}`}/>
+{#each groups as group, i}
+  <BarGroup id={`group-${i+1}`}/>
 {/each}
 
