@@ -61,7 +61,7 @@
     percentage = current/max;
     canvas = document.getElementById("canvas-"+id);
     resizeCanvasToDisplaySize(canvas);
-    gl = canvas.getContext("webgl");
+    gl = canvas.getContext("webgl2");
     if (!gl) {
       console.error("Unable to initialize WebGL. Your browser or machine may not support it.");
       return;
@@ -111,7 +111,7 @@
 
 <style>
   canvas {
-    width: 400px;
+    width: 100%;
     height: 50px;
   }
 
